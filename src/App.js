@@ -11,10 +11,16 @@ function App() {
     return randArray
   }
 
+  const [dieNum, setDieNum] = React.useState(allNewDice())
+
+  const num = dieNum.map(number => {
+    return number
+  })
+
   return (
     <main>
       <Die 
-        value = {Math.floor(Math.random() * 6) + 1}
+        value = {num}
       />
     </main>
   );
