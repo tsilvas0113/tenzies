@@ -9,7 +9,7 @@ function App() {
     for (let i = 0; i < 10; i++) {
       randArray.push({
         value: Math.floor(Math.random() * 6) + 1, 
-        isHeld: true,
+        isHeld: false,
         id: nanoid()
       })
     }
@@ -19,7 +19,12 @@ function App() {
   const [dieNum, setDieNum] = React.useState(allNewDice())
 
   const dieElements = dieNum.map(die => {
-    return <Die key={die.id} value={die.value} held={die.isHeld} />
+    return <Die 
+        key={die.id} 
+        value={die.value} 
+        held={die.isHeld}
+        handleClick={() => holdDice(die.id)} 
+      />
   })
 
   function reRoll() {
@@ -28,7 +33,11 @@ function App() {
       return prevDie.splice(0, prevDie.length, ...newArray)
     })
   }
-  console.log(dieNum)
+
+  function holdDice(id) {
+    console.log(id)
+  }
+
   return (
     <main>
       <div className="die--container">

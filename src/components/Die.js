@@ -7,7 +7,7 @@ function Die(props) {
     }
 
     return (
-        <div className="die" style={styles}>
+        <div className="die" style={styles} onClick={props.handleClick}>
             <div className="die--num">{props.value}</div>
         </div>
     )
