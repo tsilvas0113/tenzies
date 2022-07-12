@@ -1,11 +1,13 @@
 import React from "react";
-import Main from "./components/Main";
+import Die from "./components/Die";
 
 function App() {
   return (
-    <div>
-      <Main />
-    </div>
+    <main>
+      <Die 
+        value = {Math.floor(Math.random() * 6) + 1}
+      />
+    </main>
   );
 }
 

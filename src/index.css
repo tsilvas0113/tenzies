@@ -15,6 +15,32 @@ main {
   margin-left: 25px;
   margin-right: 25px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/*color:0c2231*/
+.die--container {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr 1fr 1fr 1fr;
+  gap: 35px;
+}
+
+.die {
+  position: relative;
+  background-color: #add2eb;
+  height: 60px;
+  width: 60px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.die--num {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #0c2231;
+  position: absolute;
+  left: 42%;
+  top: 30%;
+}
