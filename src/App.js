@@ -35,7 +35,11 @@ function App() {
   }
 
   function holdDice(id) {
-    console.log(id)
+    setDieNum(prevState => {
+      return prevState.map(item => {
+        return item.id === id ? {...item, isHeld: !item.isHeld} : item
+      })
+    })
   }
 
   return (
