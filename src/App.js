@@ -28,9 +28,15 @@ function App() {
   })
 
   function reRoll() {
-    let newArray = allNewDice()
     setDieNum(prevDie => {
-      return prevDie.splice(0, prevDie.length, ...newArray)
+      return prevDie.map(item => {
+        return item.isHeld === true ? 
+          item : 
+          {...item, 
+            value: Math.floor(Math.random() * 6) + 1, 
+            isHeld: false, 
+            id: nanoid()}
+      })
     })
   }
 
