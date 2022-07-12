@@ -17,11 +17,19 @@ function App() {
     return number
   })
 
+  function reRoll() {
+    let newArray = allNewDice()
+    setDieNum(prevDie => {
+      return prevDie.splice(0, prevDie.length, ...newArray)
+    })
+  }
+
   return (
     <main>
       <Die 
         value = {num}
       />
+      <button className="roll--btn" onClick={reRoll}>Roll</button>
     </main>
   );
 }
