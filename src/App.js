@@ -18,6 +18,17 @@ function App() {
 
   const [dieNum, setDieNum] = React.useState(allNewDice())
 
+  const [tenzies, setTenzies] = React.useState(false)
+
+  React.useEffect(() => {
+    const hold = dieNum.every(die => die.isHeld)
+    const sameValue = dieNum.every(die => die.value === dieNum[0].value)
+    if (hold && sameValue) {
+      setTenzies(true)
+      console.log("You won!")
+    }
+  }, [dieNum])
+
   const dieElements = dieNum.map(die => {
     return <Die 
         key={die.id} 
