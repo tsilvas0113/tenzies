@@ -52,6 +52,11 @@ function App() {
     })
   }
 
+  function newGame() {
+    setDieNum(allNewDice())
+    setTenzies(false)
+  }
+
   function holdDice(id) {
     setDieNum(prevState => {
       return prevState.map(item => {
@@ -68,7 +73,9 @@ function App() {
       <div className="die--container">
         {dieElements}
       </div>
-      <button className="roll--btn" onClick={reRoll}>{tenzies ? 'New Game' : 'Roll'}</button>
+      <button className="roll--btn" onClick={tenzies ? newGame : reRoll}>
+        {tenzies ? 'New Game' : 'Roll'}
+      </button>
     </main>
   );
 }
