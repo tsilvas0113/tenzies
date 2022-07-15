@@ -50,11 +50,17 @@ function App() {
             id: nanoid()}
       })
     })
+    setRollNumber(prevRollNumber => {
+      return prevRollNumber + 1
+    })
   }
+
+  const [rollNumber, setRollNumber] = React.useState(0)
 
   function newGame() {
     setDieNum(allNewDice())
     setTenzies(false)
+    setRollNumber(0)
   }
 
   function holdDice(id) {
@@ -76,6 +82,7 @@ function App() {
       <button className="roll--btn" onClick={tenzies ? newGame : reRoll}>
         {tenzies ? 'New Game' : 'Roll'}
       </button>
+      <p className="roll--count">Roll count: {rollNumber}</p>
     </main>
   );
 }
