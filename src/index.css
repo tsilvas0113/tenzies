@@ -47,7 +47,7 @@ main {
 }
 
 .roll--btn {
-  margin-top: 100px;
+  margin-top: 50px;
   height: 75px;
   width: 200px;
   background-color: #705fd9;
@@ -78,4 +78,11 @@ main {
 .roll--count {
   font-size: 1.2rem;
   margin-top: 3rem;
+  color: #0c2231;
+}
+
+.timer {
+  color: #0c2231;
+  margin-top: 3rem;
+  font-size: 1.5rem;
 }

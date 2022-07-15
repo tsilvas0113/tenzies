@@ -1,6 +1,6 @@
 import React from "react";
 import Die from "./components/Die";
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
 import Confetti from "react-confetti";
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
     const sameValue = dieNum.every(die => die.value === dieNum[0].value)
     if (hold && sameValue) {
       setTenzies(true)
-      console.log("You won!")
+      handlePause()
     }
   }, [dieNum])
 
@@ -35,7 +35,10 @@ function App() {
         key={die.id} 
         value={die.value} 
         held={die.isHeld}
-        handleClick={() => holdDice(die.id)} 
+        handleClick={() => {
+          holdDice(die.id)
+          handleStart()
+        }} 
       />
   })
 
@@ -61,6 +64,7 @@ function App() {
     setDieNum(allNewDice())
     setTenzies(false)
     setRollNumber(0)
+    handleReset()
   }
 
   function holdDice(id) {
@@ -71,6 +75,39 @@ function App() {
     })
   }
 
+  const [timerActive, setTimerActive] = React.useState(false)
+  const [timerPaused, setTimerPaused] = React.useState(true)
+  const [time, setTime] = React.useState(0)
+
+  React.useEffect(() => {
+    let interval = null
+
+    if (timerActive && timerPaused === false) {
+      interval = setInterval(() => {
+        setTime((time) => time + 10)
+      }, 10)
+    } else {
+      clearInterval(interval)
+    }
+    return () => {
+      clearInterval(interval)
+    }
+  }, [timerActive, timerPaused])
+
+  const handleStart = () => {
+    setTimerActive(true)
+    setTimerPaused(false)
+  }
+
+  const handlePause = () => {
+    setTimerPaused(!timerPaused)
+  }
+
+  const handleReset = () => {
+    setTimerActive(false)
+    setTime(0)
+  }
+
   return (
     <main>
       {tenzies && <Confetti />}
@@ -78,6 +115,17 @@ function App() {
       <p className="instructions">Roll until all dice are the same. Click each die to freeze it as its current value between rolls.</p>
       <div className="die--container">
         {dieElements}
+      </div>
+      <div className="timer">
+        <span className="min">
+          {('0' + Math.floor((time / 60000) % 60)).slice(-2)}:
+        </span>
+        <span className="sec">
+          {('0' + Math.floor((time / 1000) % 60)).slice(-2)}.
+        </span>
+        <span className="mili-sec">
+          {('0' + ((time / 10) % 100)).slice(-2)}
+        </span>
       </div>
       <button className="roll--btn" onClick={tenzies ? newGame : reRoll}>
         {tenzies ? 'New Game' : 'Roll'}
