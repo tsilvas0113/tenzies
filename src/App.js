@@ -27,6 +27,7 @@ function App() {
     if (hold && sameValue) {
       setTenzies(true)
       handlePause()
+      getBestTime()
     }
   }, [dieNum])
 
@@ -108,6 +109,24 @@ function App() {
     setTime(0)
   }
 
+  const [recordTime, setRecordTime] = React.useState({
+    time: localStorage.getItem('recordTimeNumber') || null
+  })
+
+  function getBestTime() {
+    setRecordTime(prevRecordTime => {
+      let newRecordTime = prevRecordTime.time ? Math.min(prevRecordTime.time, time) : time
+      return {
+        ...prevRecordTime,
+        time: newRecordTime
+      }
+    })
+  }
+
+  React.useEffect(() => {
+    localStorage.setItem('recordTimeNumber', recordTime.time)
+  }, [recordTime])
+
   return (
     <main>
       {tenzies && <Confetti />}
@@ -131,6 +150,18 @@ function App() {
         {tenzies ? 'New Game' : 'Roll'}
       </button>
       <p className="roll--count">Roll count: {rollNumber}</p>
+      <div className="record--time">Your best time is: {recordTime.time ? 
+        <span>
+          <span>
+            {('0' + Math.floor((recordTime.time / 60000) % 60)).slice(-2)}:
+          </span>
+          <span>
+            {('0' + Math.floor((recordTime.time / 1000) % 60)).slice(-2)}.
+          </span>
+          <span>
+            {('0' + ((recordTime.time / 10) % 100)).slice(-2)}
+          </span>
+        </span> : "-"}{" "}</div>
     </main>
   );
 }

@@ -86,3 +86,8 @@ main {
   margin-top: 3rem;
   font-size: 1.5rem;
 }
+
+.record--time {
+  color: #0c2231;
+  font-size: 1.3rem;
+}
