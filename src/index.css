@@ -92,7 +92,7 @@ main {
   font-size: 1.3rem;
 }
 
-@media (min-width: 1800px) {
+@media (min-width: 2000px) {
   .title {
     font-size: 7rem;
   }
@@ -186,7 +186,7 @@ main {
   main {
     margin-left: 1px;
     margin-right: 1px;
-    border-radius: 5px;
+    border-radius: 10px;
   }
 
   .title {
@@ -218,7 +218,7 @@ main {
   .roll--btn {
     width: 150px;
     height: 60px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .roll--count {
