@@ -182,6 +182,50 @@ main {
   }
 }
 
-@media (min-width: 375px) and (max-width: 424px) {
-  
+@media (min-width: 320px) and (max-width: 424px) {
+  main {
+    margin-left: 1px;
+    margin-right: 1px;
+    border-radius: 5px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .instructions {
+    font-size: .75rem;
+    width: 200px;
+  }
+
+  .die--container {
+    gap: 18px
+  }
+
+  .die {
+    height: 30px;
+    width: 30px;
+  }
+
+  .die--num {
+    font-size: .75rem;
+  }
+
+  .timer {
+    font-size: 1.2rem;
+  }
+
+  .roll--btn {
+    width: 150px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .roll--count {
+    font-size: 1rem;
+  }
+
+  .record--time {
+    font-size: 1.1rem;
+  }
 }
