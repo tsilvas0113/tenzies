@@ -91,3 +91,97 @@ main {
   color: #0c2231;
   font-size: 1.3rem;
 }
+
+@media (min-width: 1800px) {
+  .title {
+    font-size: 7rem;
+  }
+
+  .instructions {
+    font-size: 2rem;
+    width: 600px;
+  }
+
+  .die--container {
+    grid-template: 1fr / repeat(10, 1fr);
+    gap: 50px
+  }
+
+  .die {
+    height: 100px;
+    width: 100px;
+  }
+
+  .die--num {
+    top: 35%
+  }
+
+  .timer {
+    font-size: 2.2rem;
+  }
+
+  .roll--btn {
+    width: 400px;
+    height: 100px;
+    font-size: 3rem;
+  }
+
+  .roll--count {
+    font-size: 2rem;
+  }
+
+  .record--time {
+    font-size: 2.1rem;
+  }
+}
+
+@media (min-width: 425px) and (max-width: 570px) {
+  main {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .instructions {
+    font-size: .9rem;
+    width: 250px;
+  }
+
+  .die--container {
+    gap: 20px
+  }
+
+  .die {
+    height: 40px;
+    width: 40px;
+  }
+
+  .die--num {
+    font-size: .85rem;
+  }
+
+  .timer {
+    font-size: 1.2rem;
+  }
+
+  .roll--btn {
+    width: 150px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .roll--count {
+    font-size: 1rem;
+  }
+
+  .record--time {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 424px) {
+  
+}
